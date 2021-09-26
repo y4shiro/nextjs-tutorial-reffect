@@ -3,10 +3,10 @@ import { useRouter } from 'next/router';
 
 const Name: NextPage = () => {
   const router = useRouter();
-  console.log(router);
+  const { name, color } = router.query;
   return (
     <h1>
-      {router.query.name}の{router.query.color}カラーです
+      {name}の{color}カラーです
     </h1>
   );
 };
