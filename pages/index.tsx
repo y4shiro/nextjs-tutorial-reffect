@@ -2,6 +2,8 @@ import type { NextPage } from 'next';
 import Link from 'next/link';
 import Head from 'next/head';
 
+import styles from '../styles/Home.module.css';
+
 const products = [{ name: 'bag' }, { name: 'shoes' }, { name: 'socks' }];
 
 const Home: NextPage = () => {
@@ -27,7 +29,7 @@ const Home: NextPage = () => {
           </Link>
         </li>
       </ul>
-      <h1 className="heading">Hello Next.js</h1>
+      <h1 className={styles.heading}>Hello Next.js</h1>
     </div>
   );
 };
