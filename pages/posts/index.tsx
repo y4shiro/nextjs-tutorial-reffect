@@ -1,5 +1,5 @@
 import type { GetServerSideProps, NextPage } from 'next';
-import React from 'react';
+import Link from 'next/link';
 
 type Post = {
   userId: number;
@@ -14,7 +14,11 @@ const index: NextPage = ({ posts }) => {
       <h1>Post 一覧</h1>
       <ul>
         {posts.map((post: Post) => (
-          <li key={post.id}>{post.title}</li>
+          <li key={post.id}>
+            <Link href={`/posts/${post.id}`}>
+              <a>{post.title}</a>
+            </Link>
+          </li>
         ))}
       </ul>
     </div>
