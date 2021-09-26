@@ -9,6 +9,9 @@ const Home: NextPage = () => {
     <div>
       <Head>
         <title>トップページ</title>
+        <meta name="description" content="これはトップページです" />
+        <meta property="og:title" content="トップページ" />
+        <meta property="og:description" content="これはトップページ" />
       </Head>
       <ul>
         {products.map((product) => (
