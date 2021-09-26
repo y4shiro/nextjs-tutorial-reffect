@@ -28,6 +28,8 @@ const Home: NextPage = () => {
         </li>
       </ul>
       <h1 className="heading">Hello Next.js</h1>
+      <Content />
+      <p>ここにもコンテンツが入ります。</p>
       <style>
         {`
           .heading {
@@ -36,6 +38,19 @@ const Home: NextPage = () => {
           }
         `}
       </style>
+    </div>
+  );
+};
+
+const Content = () => {
+  return (
+    <div>
+      <p>ここにコンテンツが入ります。</p>
+      <style jsx>{`
+        p {
+          color: blue;
+        }
+      `}</style>
     </div>
   );
 };
