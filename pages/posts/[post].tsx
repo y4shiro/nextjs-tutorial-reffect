@@ -1,4 +1,4 @@
-import type { GetServerSideProps, NextPage } from 'next';
+import type { GetStaticProps, GetStaticPaths, NextPage } from 'next';
 
 const post: NextPage = ({ post }) => {
   return (
@@ -10,7 +10,7 @@ const post: NextPage = ({ post }) => {
   );
 };
 
-export const getServerSideProps = async ({ params }) => {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   const id = params.post;
   const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`);
   const post = await res.json();
@@ -19,6 +19,16 @@ export const getServerSideProps = async ({ params }) => {
     return { notFound: true };
   }
   return { props: { post } };
+};
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const res = await fetch(`https://jsonplaceholder.typicode.com/posts`);
+  const posts = await res.json();
+  const paths = posts.map((post) => `/posts/${post.id}`);
+  return {
+    paths,
+    fallback: false,
+  };
 };
 
 export default post;

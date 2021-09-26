@@ -1,4 +1,4 @@
-import type { GetServerSideProps, NextPage } from 'next';
+import type { GetStaticProps, NextPage } from 'next';
 import Link from 'next/link';
 
 type Post = {
@@ -25,7 +25,7 @@ const index: NextPage = ({ posts }) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const res = await fetch(`https://jsonplaceholder.typicode.com/posts`);
   const posts = await res.json();
   return { props: { posts } };
