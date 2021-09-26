@@ -28,7 +28,7 @@ const Home: NextPage = () => {
         </li>
       </ul>
       <h1 className="heading">Hello Next.js</h1>
-      <Content />
+      <Content type="alert" />
       <p>ここにもコンテンツが入ります。</p>
       <style>
         {`
@@ -42,13 +42,13 @@ const Home: NextPage = () => {
   );
 };
 
-const Content = () => {
+const Content = ({ type }) => {
   return (
     <div>
       <p>ここにコンテンツが入ります。</p>
       <style global jsx>{`
         p {
-          color: blue;
+          color: ${type == 'alert' ? 'red' : 'blue'};
         }
       `}</style>
     </div>
