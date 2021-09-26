@@ -27,10 +27,10 @@ const Home: NextPage = () => {
           </Link>
         </li>
       </ul>
-      <h1>Hello Next.js</h1>
-      <style jsx>
+      <h1 className="heading">Hello Next.js</h1>
+      <style>
         {`
-          h1 {
+          .heading {
             color: red;
             background: green;
           }
