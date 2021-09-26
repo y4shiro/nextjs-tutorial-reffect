@@ -1,7 +1,9 @@
 import type { NextPage } from 'next';
+import { useRouter } from 'next/router';
 
 const Name: NextPage = () => {
-  return <h1>商品のページです</h1>;
+  const router = useRouter();
+  return <h1>商品{router.query.name}のページです</h1>;
 };
 
 export default Name;
