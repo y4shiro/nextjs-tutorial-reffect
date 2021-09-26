@@ -14,6 +14,10 @@ export const getServerSideProps = async ({ params }) => {
   const id = params.post;
   const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`);
   const post = await res.json();
+
+  if (!Object.keys(post).length) {
+    return { notFound: true };
+  }
   return { props: { post } };
 };
 
