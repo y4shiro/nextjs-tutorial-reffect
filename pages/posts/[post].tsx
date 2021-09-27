@@ -1,6 +1,14 @@
-import type { GetStaticProps, GetStaticPaths, NextPage } from 'next';
+import type {
+  GetStaticProps,
+  GetStaticPaths,
+  NextPage,
+  InferGetStaticPropsType,
+} from 'next';
+import type { Post } from './index';
 
-const post: NextPage = ({ post }) => {
+type Props = InferGetStaticPropsType<typeof getStaticProps>;
+
+const post: NextPage<Props> = ({ post }) => {
   return (
     <div>
       <h1>POST(投稿){post.id}</h1>
@@ -11,7 +19,7 @@ const post: NextPage = ({ post }) => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const id = params.post;
+  const id = params!.post;
   const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`);
   const post = await res.json();
 
@@ -24,7 +32,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 export const getStaticPaths: GetStaticPaths = async () => {
   const res = await fetch(`https://jsonplaceholder.typicode.com/posts`);
   const posts = await res.json();
-  const paths = posts.map((post) => `/posts/${post.id}`);
+  const paths = posts.map((post: Post) => `/posts/${post.id}`);
   return {
     paths,
     fallback: false,

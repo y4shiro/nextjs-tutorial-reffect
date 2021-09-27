@@ -1,14 +1,16 @@
-import type { GetStaticProps, NextPage } from 'next';
+import type { GetStaticProps, NextPage, InferGetStaticPropsType } from 'next';
 import Link from 'next/link';
 
-type Post = {
+export type Post = {
   userId: number;
   id: number;
   title: string;
   body: string;
 };
 
-const index: NextPage = ({ posts }) => {
+type Props = InferGetStaticPropsType<typeof getStaticProps>;
+
+const index: NextPage<Props> = ({ posts }) => {
   return (
     <div>
       <h1>Post 一覧</h1>
